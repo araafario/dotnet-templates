@@ -1,0 +1,274 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DotnetTemplates</name>
+    </assembly>
+    <members>
+        <member name="T:DotnetTemplates.Configs.ApiConfig">
+            <summary>
+            Represents the configuration settings for the API.
+            </summary>
+        </member>
+        <member name="P:DotnetTemplates.Configs.ApiConfig.Environment">
+            <summary>
+            Gets the environment the application is running in. This value determines database and API server
+            the applicatin will point to.
+            </summary>
+        </member>
+        <member name="P:DotnetTemplates.Configs.ApiConfig.Version">
+            <summary>
+            Gets API version.
+            </summary>
+        </member>
+        <member name="P:DotnetTemplates.Configs.ApiConfig.UseHttps">
+            <summary>
+            Gets or sets a value indicating whether the application should use HTTPs.
+            </summary>
+            <remarks>
+            This settings should only be set to false when a service is running behind a
+            reverse proxy (i.e. a containerised development environment).
+            </remarks>
+        </member>
+        <member name="P:DotnetTemplates.Configs.ApiConfig.Port">
+            <summary>
+            Gets or sets the port the server will run on when running in development mode. When run as a hosted service
+            this value will be overwritten.
+            </summary>
+        </member>
+        <member name="P:DotnetTemplates.Configs.ApiConfig.DatabaseConnectionString">
+            <summary>
+            Gets or sets the database connection string.
+            </summary>
+        </member>
+        <member name="P:DotnetTemplates.Configs.ApiConfig.JwtSigningToken">
+            <summary>
+            Gets or sets the token used to sign JWTs.
+            </summary>
+        </member>
+        <member name="P:DotnetTemplates.Configs.ApiConfig.Seq">
+            <summary>
+            Gets or sets the Seq config.
+            </summary>
+        </member>
+        <member name="T:DotnetTemplates.Configs.SeqConfig">
+            <summary>
+            Configuration model for Seq.
+            </summary>
+        </member>
+        <member name="P:DotnetTemplates.Configs.SeqConfig.Enabled">
+            <summary>
+            Gets or sets a value indicating whether logs will be written to Seq.
+            </summary>
+        </member>
+        <member name="P:DotnetTemplates.Configs.SeqConfig.Url">
+            <summary>
+            Gets or sets a value indicating the URL of the Seq instance.
+            </summary>
+        </member>
+        <member name="P:DotnetTemplates.Configs.SeqConfig.ApiKey">
+            <summary>
+            Gets or sets a value indicating the API key used to access Seq.
+            </summary>
+        </member>
+        <member name="T:DotnetTemplates.Controllers.SampleController">
+            <summary>
+            Sample controller to indicate standard endpoints.
+            </summary>
+        </member>
+        <member name="M:DotnetTemplates.Controllers.SampleController.#ctor(DotnetTemplates.Database.DotnetTemplatesContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotnetTemplates.Controllers.SampleController"/> class.
+            </summary>
+            <param name="dbContext">dbContext.</param>
+        </member>
+        <member name="M:DotnetTemplates.Controllers.SampleController.GetTest">
+            <summary>
+            Get test object, relying on standard serialization.
+            </summary>
+            <returns>
+            {
+              "data": {
+                "test": "one",
+                "next": "two"
+              }
+            }.
+            </returns>
+        </member>
+        <member name="M:DotnetTemplates.Controllers.SampleController.GetTestEf(System.Int32)">
+            <summary>
+            Get the name of a test person by ID using Entity Framework.
+            </summary>
+            <param name="id">The ID of the test person.</param>
+            <returns>The name of the person if found, otherwise 404.</returns>
+        </member>
+        <member name="M:DotnetTemplates.Controllers.SampleController.AddTestEf(DotnetTemplates.Database.Models.TestPerson)">
+            <summary>
+            Post new person.
+            </summary>
+            <param name="person">The test person to add.</param>
+            <returns>The created person.</returns>
+        </member>
+        <member name="M:DotnetTemplates.Controllers.SampleController.GetError">
+            <summary>
+            Get error object.
+            </summary>
+            <returns>
+            {
+              "error": {
+                ...
+              }
+            }.
+            </returns>
+        </member>
+        <member name="T:DotnetTemplates.Controllers.VersionController">
+            <summary>
+            Controller for the Version.
+            </summary>
+        </member>
+        <member name="M:DotnetTemplates.Controllers.VersionController.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Controller for the Version.
+            </summary>
+        </member>
+        <member name="M:DotnetTemplates.Controllers.VersionController.GetVersion">
+            <summary>
+            Gets the current Environment and Version of the ProjectCodeName.
+            </summary>
+            <returns>The environment and the version.</returns>
+        </member>
+        <member name="T:DotnetTemplates.Database.DotnetTemplatesContext">
+            <summary>
+            Database context for the Teams User Management context.
+            </summary>
+        </member>
+        <member name="M:DotnetTemplates.Database.DotnetTemplatesContext.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotnetTemplates.Database.DotnetTemplatesContext"/> class.
+            </summary>
+        </member>
+        <member name="M:DotnetTemplates.Database.DotnetTemplatesContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{DotnetTemplates.Database.DotnetTemplatesContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotnetTemplates.Database.DotnetTemplatesContext"/> class.
+            </summary>
+            <param name="options">Configuration options for the Teams Admin context.</param>
+        </member>
+        <member name="P:DotnetTemplates.Database.DotnetTemplatesContext.TestPersons">
+            <summary>
+            Gets or sets the DBSet for the TestPerson entity.
+            </summary>
+        </member>
+        <member name="M:DotnetTemplates.Database.DotnetTemplatesContext.SaveChanges">
+            <summary>
+            Save changes to database.
+            </summary>
+            <returns>The number of state entries written to the database.</returns>
+        </member>
+        <member name="M:DotnetTemplates.Database.DotnetTemplatesContext.SaveChangesAsync(System.Threading.CancellationToken)">
+            <summary>
+            Save changes to database async.
+            </summary>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>The number of state entries written to the database.</returns>
+        </member>
+        <member name="M:DotnetTemplates.Database.DotnetTemplatesContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:DotnetTemplates.Database.Models.EntityBase">
+            <summary>
+            Base entity with timestamps to be implemented by entities used in EF Core aplications.
+            </summary>
+        </member>
+        <member name="P:DotnetTemplates.Database.Models.EntityBase.CreatedAt">
+            <summary>
+            Gets or sets the date the entity was first created. This property should be populated
+            automatically by the database context when a new entity is created. If set manually
+            it will be overwritten when saved.
+            </summary>
+        </member>
+        <member name="P:DotnetTemplates.Database.Models.EntityBase.UpdatedAt">
+            <summary>
+            Gets or sets the date the entity was last updated. This property should be populated
+            automatically by the database context when an entity is updated, if set manually
+            it will be overwritten when saved.
+            </summary>
+        </member>
+        <member name="T:DotnetTemplates.Database.Models.TestPerson">
+            <summary>
+            Base Model for TestPerson.
+            </summary>
+        </member>
+        <member name="P:DotnetTemplates.Database.Models.TestPerson.Id">
+            <summary>
+            Gets or Sets the Id.
+            </summary>
+        </member>
+        <member name="P:DotnetTemplates.Database.Models.TestPerson.Name">
+            <summary>
+            Gets or sets Name.
+            </summary>
+        </member>
+        <member name="T:DotnetTemplates.Extensions.DbContextExtensions">
+            <summary>
+            DbContext extension that allows tracking creation and update of entities to set
+            CreatedAt and UpdatedAt timestamps.
+            </summary>
+        </member>
+        <member name="M:DotnetTemplates.Extensions.DbContextExtensions.SetCreatedUpdatesTimestamps(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            Sets CreatedAt and UpdatedAt values. Should be called inside SaveChanges() and
+            SaveChangesAsync().
+            </summary>
+            <param name="context">Context with entities to set timestamps to.</param>
+        </member>
+        <member name="T:DotnetTemplates.Migrations.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:DotnetTemplates.Migrations.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DotnetTemplates.Migrations.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DotnetTemplates.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:DotnetTemplates.Program">
+            <summary>
+            The main class of the Harmony application.
+            </summary>
+        </member>
+        <member name="M:DotnetTemplates.Program.Main(System.String[])">
+            <summary>
+            The entry point of the application.
+            </summary>
+            <param name="args">Command-line arguments.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:DotnetTemplates.WebApp.WebApplicationBuilderExtensions">
+            <summary>
+            Web Application Builder Extensions.
+            </summary>
+        </member>
+        <member name="M:DotnetTemplates.WebApp.WebApplicationBuilderExtensions.RegisterServices(Microsoft.AspNetCore.Builder.WebApplicationBuilder,DotnetTemplates.Configs.ApiConfig)">
+            <summary>
+            Registers various services required by the web application.
+            </summary>
+            <param name="applicationBuilder">The <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder"/> instance to which the services will be registered.</param>
+            <param name="apiConfig">API configuration.</param>
+            <returns>The same <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder"/> instance after services registration.</returns>
+        </member>
+        <member name="T:DotnetTemplates.WebApp.WebApplicationExtensions">
+            <summary>
+            Contains extension methods for setting up middleware in the <see cref="T:Microsoft.AspNetCore.Builder.WebApplication"/>.
+            </summary>
+        </member>
+        <member name="M:DotnetTemplates.WebApp.WebApplicationExtensions.SetupMiddleware(Microsoft.AspNetCore.Builder.WebApplication,DotnetTemplates.Configs.ApiConfig)">
+            <summary>
+            Sets up the middleware required for the web application.
+            </summary>
+            <param name="application">The <see cref="T:Microsoft.AspNetCore.Builder.WebApplication"/> instance to which the middleware will be applied.</param>
+            <param name="apiConfig">API configuration.</param>
+            <returns>The same <see cref="T:Microsoft.AspNetCore.Builder.WebApplication"/> instance after middleware setup.</returns>
+        </member>
+    </members>
+</doc>
